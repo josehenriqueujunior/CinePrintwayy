@@ -1,0 +1,72 @@
+﻿@model CinePrintwayy.Models.Sessao
+
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+
+<h4>Sessao</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Data" class="control-label"></label>
+                <input asp-for="Data" class="form-control" />
+                <span asp-validation-for="Data" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HorarioInicio" class="control-label"></label>
+                <input asp-for="HorarioInicio" class="form-control" />
+                <span asp-validation-for="HorarioInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HorarioFim" class="control-label"></label>
+                <input asp-for="HorarioFim" class="form-control" />
+                <span asp-validation-for="HorarioFim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValorIngresso" class="control-label"></label>
+                <input asp-for="ValorIngresso" class="form-control" />
+                <span asp-validation-for="ValorIngresso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoAnimacao" class="control-label"></label>
+                <input asp-for="TipoAnimacao" class="form-control" />
+                <span asp-validation-for="TipoAnimacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoAudio" class="control-label"></label>
+                <input asp-for="TipoAudio" class="form-control" />
+                <span asp-validation-for="TipoAudio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdSala" class="control-label"></label>
+                <input asp-for="IdSala" class="form-control" />
+                <span asp-validation-for="IdSala" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+</html>

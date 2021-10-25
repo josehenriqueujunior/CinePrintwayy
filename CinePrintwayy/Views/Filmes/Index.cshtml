@@ -1,0 +1,133 @@
+﻿@model IEnumerable<CinePrintwayy.Models.Filme>
+
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Filmes</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create" class="myButton">Novo Registro</a>
+</p>
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duracao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">
+                    <img src="@FileLocation.RetriveFileFromFolder@item.Imagem" class="img-thumbnail" height="100" width="100" asp-append-version="true" />
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duracao)
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-primary" asp-route-id="@item.Id">Edit</a>
+                <a asp-action="Details" class="btn btn-success" asp-route-id="@item.Id">Details</a>
+                <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>
+
+<style>
+    .styled-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+        .styled-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+        }
+
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+        }
+
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+            .styled-table tbody tr:nth-of-type(even) {
+                background-color: #f3f3f3;
+            }
+
+            .styled-table tbody tr:last-of-type {
+                border-bottom: 2px solid #009879;
+            }
+
+            .styled-table tbody tr.active-row {
+                font-weight: bold;
+                color: #009879;
+            }
+
+    .myButton {
+        box-shadow: inset 0px 1px 0px 0px #caefab;
+        background: linear-gradient(to bottom, #77d42a 5%, #5cb811 100%);
+        background-color: #77d42a;
+        border-radius: 6px;
+        border: 1px solid #268a16;
+        display: inline-block;
+        cursor: pointer;
+        color: #306108;
+        font-family: Arial;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 5px 20px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #aade7c;
+    }
+
+        .myButton:hover {
+            background: linear-gradient(to bottom, #5cb811 5%, #77d42a 100%);
+            background-color: #5cb811;
+        }
+
+        .myButton:active {
+            position: relative;
+            top: 1px;
+        }
+
+    .body {
+        margin: 0 auto;
+        max-width: 700px;
+    }
+</style>

@@ -1,0 +1,157 @@
+﻿@model IEnumerable<CinePrintwayy.Models.Sessao>
+
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sessões</title>
+</head>
+<body>
+    <p>
+        <a class = "myButton" asp-action="Create">Novo Registro</a>
+    </p>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HorarioInicio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HorarioFim)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ValorIngresso)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoAnimacao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoAudio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdFilme)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdSala)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HorarioInicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HorarioFim)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorIngresso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoAnimacao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoAudio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Filme.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sala.Nome)
+                </td>
+                <td>
+                    <a asp-action="Details" class="btn btn-success" asp-route-id="@item.Id">Details</a>
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
+<style>
+    .styled-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+        .styled-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+        }
+
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+        }
+
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+            .styled-table tbody tr:nth-of-type(even) {
+                background-color: #f3f3f3;
+            }
+
+            .styled-table tbody tr:last-of-type {
+                border-bottom: 2px solid #009879;
+            }
+
+            .styled-table tbody tr.active-row {
+                font-weight: bold;
+                color: #009879;
+            }
+
+    .myButton {
+        box-shadow: inset 0px 1px 0px 0px #caefab;
+        background: linear-gradient(to bottom, #77d42a 5%, #5cb811 100%);
+        background-color: #77d42a;
+        border-radius: 6px;
+        border: 1px solid #268a16;
+        display: inline-block;
+        cursor: pointer;
+        color: #306108;
+        font-family: Arial;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 5px 20px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #aade7c;
+    }
+
+        .myButton:hover {
+            background: linear-gradient(to bottom, #5cb811 5%, #77d42a 100%);
+            background-color: #5cb811;
+        }
+
+        .myButton:active {
+            position: relative;
+            top: 1px;
+        }
+
+    .body {
+        margin: 0 auto;
+        max-width: 700px;
+    }
+</style>
+
+<script>
+</script>
